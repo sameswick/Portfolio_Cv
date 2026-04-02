@@ -1,0 +1,17 @@
+# Dane (Ignoruj foldery 'data' i 'archive' w KAŻDYM podprojekcie)
+**/data/
+**/archive/
+**/archive (1)/
+**/*.zip
+**/*.csv
+
+# Środowisko Python i Jupyter
+**/__pycache__/
+**/.ipynb_checkpoints/
+.virtualenv/
+venv/
+.env
+
+# Systemowe
+.DS_Store
+Thumbs.db
