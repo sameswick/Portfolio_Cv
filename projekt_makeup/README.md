@@ -10,7 +10,9 @@ Proces EDA został podzielony na trzy etapy: od ogólnej kondycji biznesu po szc
 1. Struktura Sprzedaży i Liderzy Rynkowi
 
 Zidentyfikowano kluczowe marki i produkty generujące największy obrót.
+
 -Wniosek: Top 5 marek odpowiada za znaczącą część całkowitego przychodu, co wskazuje na silną koncentrację rynku.
+
 -Wykres: ![Top 5 Marek](images/top_5_brands.png)
 
 
