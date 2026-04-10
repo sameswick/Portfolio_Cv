@@ -1,6 +1,6 @@
 #  Data Science & Machine Learning Portfolio
 
-Cześć 👋  
+Cześć 🙂 
 
 To repozytorium zawiera moje projekty z obszaru **Data Science i Machine Learning**, oparte na realnych problemach biznesowych takich jak analiza klientów, prognozowanie sprzedaży i interpretacja danych.
 
