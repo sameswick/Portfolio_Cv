@@ -14,28 +14,44 @@ Z przeprowadzonej analizy wynikają następujące spostrzeżenia biznesowe:
 ###  Demografia ryzyka
 - Największe prawdopodobieństwo odejścia występuje w grupie wiekowej **41–60 lat**  
 - Jest to grupa zamożna, której utrzymanie powinno być priorytetem strategicznym banku  
+
+![Wykres: Procent odejść w grupach wiekowych](images/grupy_wiekowe_out.png)
+
+---
+
 - Statystycznie **kobiety odchodzą częściej niż mężczyźni**
 
-![Wykres: Procent odejść w grupach wiekowych](sciezka/do/twojego/wykresu_wiek.png)
+![Wykres: churn wg płci](images/out_plec.png)
+
 
 ###  Geografia
 - Rynek niemiecki jest najbardziej krytyczny  
 - Mimo że Francja posiada większą bazę klientów, to w Niemczech tracimy ich najszybciej (najwyższy współczynnik odejść)
 
+![Wykres: najbardziej krytyczny ](images/out_w_krajach.png)
+
 ###  Produkty i Aktywność
 - Wskaźnik odejść drastycznie rośnie u klientów posiadających **powyżej 2 produktów**  
+
+![Wykres: Wskaźnik odejść](images/liczby_produktow_churn.png)
+
 - Członkowie **nieaktywni odchodzą prawie dwukrotnie częściej** niż osoby aktywne  
+
+![Wykres: nieaktywni odchodzą](images/aktywnosc_klienta.png)
+
 
 ###  Saldo konta (Balance)
 - Paradoksalnie, klienci z **zerowym saldem rzadziej odchodzą** (prawdopodobnie przez brak zaangażowania)  
 - Krytyczny odpływ kapitału obserwujemy u klientów z saldem **100,000 – 150,000 USD**  
 - Jest to najbardziej dochodowa grupa, którą bank traci  
 
-![Wykres: Rozkład salda klientów](sciezka/do/twojego/wykresu_saldo.png)
+![Wykres: Rozkład salda klientów](images/rozklad_salda.png)
 
 ###  Zarobki
 - Poziom wynagrodzenia (**Estimated Salary**) okazał się czynnikiem neutralnym  
 - Rozkład zarobków w obu grupach (lojalni vs odchodzący) jest niemal identyczny  
+
+![Wykres: Poziom wynagrodzenia](images/rozklad_wynagrodzenie.png)
 
 ---
 
@@ -49,7 +65,7 @@ W procesie budowy modelu skupiłam się na radzeniu sobie z trudnymi, niezbalans
 - **Balansowanie klas (Borderline-SMOTE)**  
   Ze względu na małą liczbę klientów odchodzących (~20%), zastosowałam Borderline-SMOTE, aby douczyć model na trudnych przypadkach z granicy klas  
 
-- **Optymalizacja Bayesowska (Optuna)**  
+- **Optymalizacja Hiperparametrów (Optuna)**  
   Zamiast tradycyjnego wyszukiwania, użyłam biblioteki Optuna do automatycznego znalezienia najlepszych parametrów modelu XGBoost w 50 próbach  
 
 - **Walidacja**  
@@ -73,7 +89,7 @@ Dzięki optymalizacji, model osiągnął wysoki poziom czułości, co jest klucz
 Model poprawnie identyfikuje **77% wszystkich klientów**, którzy faktycznie zamierzają odejść,  
 co stanowi ogromny wzrost w stosunku do bazowych modeli bez optymalizacji (**Recall ~0.58**)
 
-![Wykres: Top 10 cech wpływających na odejście](sciezka/do/twojego/wykresu_importances.png)
+![Wykres: Top 10 cech wpływających na odejście](images/top_10_model.png)
 
 ---
 
