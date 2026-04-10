@@ -1,100 +1,129 @@
-Makeup Sales Revenue Prediction & Analysis
+#  Makeup Sales Analysis & Revenue Prediction
 
-Opis projektu:
-Projekt ma na celu analizę trendów sprzedaży oraz budowę modelu uczenia maszynowego do przewidywania przychodu (Revenue_USD) w sektorze kosmetycznym. Wykorzystano techniki analizy szeregów czasowych (Time Series) oraz model Random Forest, aby zrozumieć, jakie czynniki (marka, kraj, kanał sprzedaży) mają największy wpływ na wynik finansowy.
+##  Opis projektu
+Projekt koncentruje się na analizie danych sprzedażowych produktów kosmetycznych oraz budowie modelu predykcyjnego, który szacuje dzienny przychód (Revenue).
 
+Głównym wyzwaniem była duża zmienność dzienna oraz rozproszony charakter danych (sparse data), co jest typowe dla branży retail i e-commerce.
 
-Eksploracyjna Analiza Danych (EDA)
-Proces EDA został podzielony na trzy etapy: od ogólnej kondycji biznesu po szczegółową segmentację marek.
+---
 
-1. Struktura Sprzedaży i Liderzy Rynkowi
+##  Eksploracyjna Analiza Danych (EDA)
 
-Zidentyfikowano kluczowe marki i produkty generujące największy obrót.
+###  Top 5 marek
+![Top brands](images/top_5_brands.png)
 
-Wniosek: Top 5 marek odpowiada za znaczącą część całkowitego przychodu, co wskazuje na silną koncentrację rynku.
+**Wniosek:**  
+Top 5 marek odpowiada za znaczącą część całkowitego przychodu, co wskazuje na silną koncentrację rynku.
 
-Wykres: ![Top 5 Marek](images/top_5_brands.png)
+---
 
+###  Top 5 produktów
+![Top products](images/top_5_products.png)
 
-2. Globalne Trendy Czasowe (Macro View)
+**Wnioski:**  
+Pięć najlepiej sprzedających się typów produktów odpowiada za znaczącą część całkowitego obrotu.  
 
-Zastosowano agregację dzienną oraz średnie kroczące (7-dniową i 30-dniową), aby wyeliminować szum informacyjny i dostrzec realne trendy.
+Struktura sprzedaży sugeruje jasno określone preferencje klientów.
 
-Wniosek : Pomimo dużej zmienności dziennej, trend długoterminowy (czerwona linia) jest stabilny z lekką tendencją wzrostową w drugiej połowie roku.
+---
 
-Wykres: ![Trend Globalny](images/global_revenue_trend.png)
+###  Kanały sprzedaży
+![Sales channels](images/sales_channels_revenue.png)
 
+**Wnioski:**  
+Model omnichannel — kanał Online jako główny motor sprzedaży, wspierany przez sklepy stacjonarne.
 
+---
 
-3. Segmentacja Marek i Rzadkość Danych (Micro View)
+###  Marka vs Kraj (Heatmapa)
+![Heatmap](images/heatmap_brand_country.png)
 
-Szczegółowa analiza trendów dla poszczególnych brandów (z wykorzystaniem Weekly Resampling oraz Interpolacji) ujawniła, że każda marka posiada unikalną dynamikę sprzedaży.
+**Wniosek:**  
+Dominacja konkretnych marek w wybranych krajach wskazuje na potrzebę personalizacji strategii marketingowej.
 
-Wniosek: Marki luksusowe (np. Dior, MAC) charakteryzują się rzadszymi, ale wyższymi transakcjami, podczas gdy marki masowe wykazują większą regularność. To odkrycie uzasadniło wybór modelu nieliniowego.
+---
 
-Wykres: ![Trendy Marek](images/brand_trends_comparison.png)
+###  Trend globalny przychodu
+![Trend](images/global_revenue_trend.png)
 
+**Wniosek:**  
+Pomimo dużej zmienności dziennej, trend długoterminowy jest stabilny z lekką tendencją wzrostową.
 
+---
 
-4. Geografia i Kanały Sprzedaży 
+###  Przychód miesięczny
+![Monthly](images/monthly_revenue_total.png)
 
-Mapa ciepła (Heatmap) pozwoliła odkryć korelacje między krajem a preferencjami marek.
+**Wnioski:**  
+Brak drastycznych spadków sugeruje stabilny popyt i dobrą dostępność produktów.
 
-Wniosek: Wyraźna dominacja określonych marek na konkretnych rynkach sugeruje konieczność personalizacji strategii marketingowych.
+---
 
-Wykres: ![Heatmapa](images/heatmap_brand_country.png)
+###  Trendy sprzedaży marek
+![Brands trend](images/brand_trends_comparison.png)
 
-5. Portfolio produktowe
+**Wniosek:**  
+Marki luksusowe mają rzadsze, ale większe transakcje, a masowe — stabilniejszą sprzedaż.
 
-Dominacja Kategorii: Pięć najlepiej sprzedających się typów produktów odpowiada za znaczącą część całkowitego obrotu.
+---
 
-Struktura sprzedaży: Skupienie przychodu na kilku głównych kategoriach sugeruje, że portfolio jest zoptymalizowane, a klienci mają jasno określone preferencje zakupowe.
+##  Preprocessing danych
 
-Wykres: ![Produkty](images/top_5_products.png)
+- Usunięcie wartości odstających (Outliers) metodą IQR  
+- Kodowanie zmiennych kategorycznych (One-Hot Encoding)  
+- Skalowanie cech numerycznych (StandardScaler)  
 
-6. Sezonowość Miesięczna
+---
 
-Wykres pozwala szybko zidentyfikować miesiące o najwyższej wydajności sprzedażowej
+##  Modelowanie i Machine Learning
 
-Wnioski : Brak drastycznych spadków z miesiąca na miesiąc sugeruje zdrową strukturę popytu i brak problemów z dostępnością towaru
+Do przewidywania przychodu wykorzystano algorytm **Random Forest Regressor**.
 
-Wykres: ![Sezon](images/monthly_revenue_total.png)
+Pipeline obejmuje:
+- preprocessing danych (numeryczne + kategoryczne)
+- model Random Forest
+- automatyczną optymalizację hiperparametrów (Optuna)
 
+---
 
-7. Kanały Sprzedaży 
+##  Wyniki modelu
 
-Wnioski : Analiza wykazała silny model omnichannel, w którym głównym motorem zysków jest kanał Online. Sklepy stacjonarne  stanowią dla niego kluczowe uzupełnienie, generując przychód na zbliżonym poziomie. Obecność w centrach handlowych oraz salonach urody zapewnia marce pełną dywersyfikację i dotarcie do klienta w każdym istotnym punkcie styk
+| Metryka                     | Wynik        |
+|----------------------------|-------------|
+| Mean Absolute Error (MAE)  | 666.06 USD  |
+| R-squared (R²)             | 0.37        |
 
-Wykres: ![Kanały](images/sales_channels_revenue.png)
+---
 
+##  Komentarz techniczny
 
+Wynik R² na poziomie 0.37 przy dużej zmienności dziennej i rzadkich danych jest satysfakcjonujący.  
 
+Model poprawnie identyfikuje kluczowe czynniki wpływające na sprzedaż.
 
-Modelowanie i Machine Learning 
-Do przewidywania przychodu wykorzystano algorytm Random Forest Regressor.
+---
 
-Preprocessing:
+##  Feature Importance
+![Feature importance](images/feature_importance.png)
 
-- Usunięcie wartości odstających (Outliers) metodą IQR. Kodowanie zmiennych kategorycznych  za pomocą One-Hot Encoding.
+---
 
--Skalowanie cech numerycznych przy użyciu StandardScaler.
+##  Kluczowe Wnioski Biznesowe
 
-Wyniki modelu:
-Po optymalizacji hiperparametrów (m.in. n_estimators, max_depth), model uzyskał następujące wyniki:
+- **Potencjał Kanałów:**  
+  Kanały sprzedaży różnią się rentownością → warto przesunąć budżet marketingowy  
 
--Mean Absolute Error (MAE): 666.06 USD
+- **Optymalizacja Zapasów:**  
+  Analiza trendów umożliwia lepsze zarządzanie magazynem  
 
--R-squared (R^2): 0.37
+- **Wartość Predykcji:**  
+  Model przewiduje przychód z dokładnością ~660 USD → wsparcie dla budżetowania  
 
-Komentarz techniczny: 
+---
 
-Wynik R^2 na poziomie 0.37 przy tak dużej zmienności dziennej i rzadkich danych (sparse data) jest satysfakcjonujący i wskazuje na poprawną identyfikację kluczowych czynników wpływających na sprzedaż.
+##  Technologie
 
-
-Kluczowe Wnioski Biznesowe
-
-Potencjał Kanałów: Sprzedaż w kanale [Online/In-store] generuje wyższą marżę, co sugeruje przesunięcie budżetów reklamowych.
-
-Optymalizacja Zapasów: Dzięki analizie trendów tygodniowych możliwe jest lepsze planowanie stanów magazynowych dla kluczowych marek w okresach szczytowych.
-
-Wartość Predykcji: Model pozwala na szacowanie przychodu z dokładnością do ~660 USD, co wspiera procesy budżetowania krótkoterminowego.
+- Python (Pandas, NumPy)  
+- Scikit-learn (Random Forest, Pipeline)  
+- Optuna (optymalizacja)  
+- Matplotlib, Seaborn (wizualizacja)  

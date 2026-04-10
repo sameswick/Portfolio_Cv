@@ -16,6 +16,8 @@ Z przeprowadzonej analizy wynikają następujące spostrzeżenia biznesowe:
 - Jest to grupa zamożna, której utrzymanie powinno być priorytetem strategicznym banku  
 - Statystycznie **kobiety odchodzą częściej niż mężczyźni**
 
+![Wykres: Procent odejść w grupach wiekowych](sciezka/do/twojego/wykresu_wiek.png)
+
 ###  Geografia
 - Rynek niemiecki jest najbardziej krytyczny  
 - Mimo że Francja posiada większą bazę klientów, to w Niemczech tracimy ich najszybciej (najwyższy współczynnik odejść)
@@ -28,6 +30,8 @@ Z przeprowadzonej analizy wynikają następujące spostrzeżenia biznesowe:
 - Paradoksalnie, klienci z **zerowym saldem rzadziej odchodzą** (prawdopodobnie przez brak zaangażowania)  
 - Krytyczny odpływ kapitału obserwujemy u klientów z saldem **100,000 – 150,000 USD**  
 - Jest to najbardziej dochodowa grupa, którą bank traci  
+
+![Wykres: Rozkład salda klientów](sciezka/do/twojego/wykresu_saldo.png)
 
 ###  Zarobki
 - Poziom wynagrodzenia (**Estimated Salary**) okazał się czynnikiem neutralnym  
@@ -69,22 +73,24 @@ Dzięki optymalizacji, model osiągnął wysoki poziom czułości, co jest klucz
 Model poprawnie identyfikuje **77% wszystkich klientów**, którzy faktycznie zamierzają odejść,  
 co stanowi ogromny wzrost w stosunku do bazowych modeli bez optymalizacji (**Recall ~0.58**)
 
+![Wykres: Top 10 cech wpływających na odejście](sciezka/do/twojego/wykresu_importances.png)
+
 ---
 
-## 💡 Rekomendacje Biznesowe
+## Rekomendacje Biznesowe
 
-- 🇩🇪 **Niemcy**  
+-  **Niemcy**  
   Skoncentrowanie działań retencyjnych na rynku niemieckim  
 
-- 👤 **Segment 40–60**  
+-  **Segment 40–60**  
   Stworzenie dedykowanych produktów dla osób w wieku dojrzałym z wysokim saldem (**100k–150k USD**)  
 
-- 🔄 **Aktywacja**  
+-  **Aktywacja**  
   Kampanie mające na celu zmianę statusu z *Inactive* na *Active* mogą zmniejszyć ryzyko odejścia o połowę  
 
 ---
 
-## 📁 Technologie
+##  Technologie
 
 - **Data Analysis:** Pandas, Seaborn, Matplotlib  
 - **Machine Learning:** XGBoost, Scikit-learn  
