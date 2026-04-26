@@ -1,87 +1,196 @@
 #  Data Science & Machine Learning Portfolio
 
-Cześć 🙂 
+##  O mnie
 
-To repozytorium zawiera moje projekty z obszaru **Data Science i Machine Learning**, oparte na realnych problemach biznesowych takich jak analiza klientów, prognozowanie sprzedaży i interpretacja danych.
+Cześć 🙂  
 
-Każdy projekt łączy:
-- analizę danych (EDA)
-- wizualizacje
-- modele uczenia maszynowego
-- wnioski biznesowe
+To repozytorium zawiera moje projekty z obszaru **Data Science i Machine Learning**, oparte na realnych problemach biznesowych takich jak:
+
+- analiza klientów i churn
+- credit scoring i ryzyko kredytowe
+- prognozowanie sprzedaży i przychodu
+
+Każdy projekt został wykonany end-to-end:  
+od **EDA → preprocessing → modelowanie → interpretacja biznesowa**.
 
 ---
 
 ##  Cel portfolio
 
-Celem tego repozytorium jest pokazanie umiejętności pracy z danymi end-to-end:
-od surowych danych → przez analizę → aż po model predykcyjny i interpretację wyników.
+Celem tego portfolio jest pokazanie umiejętności pracy z danymi w praktyce:
 
-Skupiam się nie tylko na modelach, ale również na **zrozumieniu problemu biznesowego i wyciąganiu wniosków z danych**.
-
----
-
-##  Projekty
-
-###  Bank Churn Analysis & Prediction
-Model predykcyjny identyfikujący klientów zagrożonych odejściem z banku.
-
-**Zakres projektu:**
-- analiza zachowań klientów (EDA)
-- identyfikacja czynników churnu
-- model klasyfikacyjny (XGBoost)
-- obsługa niezbalansowanych danych (SMOTE)
-- optymalizacja hiperparametrów (Optuna)
-
-**Cel**: maksymalizacja wykrywania klientów, którzy mogą odejść
+- analiza i eksploracja danych (EDA)
+- inżynieria cech (feature engineering)
+- budowa modeli ML (klasyfikacja i regresja)
+- obsługa niezbalansowanych danych
+- optymalizacja modeli (Optuna)
+- interpretacja wyników w kontekście biznesowym
 
 ---
 
-###  Makeup Sales Analysis & Revenue Prediction
-Analiza sprzedaży produktów kosmetycznych oraz prognozowanie dziennego przychodu.
-
-**Zakres projektu:**
-- analiza trendów sprzedaży i sezonowości
-- identyfikacja top marek i kanałów sprzedaży
-- model regresyjny (Random Forest)
-- optymalizacja modelu (Optuna)
-
-**Cel**: prognozowanie przychodu i wsparcie decyzji biznesowych
+## Projekty
 
 ---
 
-##  Umiejętności techniczne
+#  Bank Credit Scoring – Predykcja niewypłacalności
+
+##  Cel projektu
+Predykcja ryzyka niewypłacalności klientów banku (`SeriousDlqin2yrs`) w horyzoncie 2 lat.
+
+---
+
+##  Kluczowe elementy
+
+###  EDA
+- analiza wieku → młodzi klienci = wyższe ryzyko
+- historia opóźnień → najsilniejszy predictor defaultu
+- Debt Ratio → silny wskaźnik zadłużenia
+- analiza segmentów klientów (wiek + dochód)
+
+---
+
+###  Modelowanie
+- LightGBM, XGBoost, Random Forest
+- BorderlineSMOTE (imbalanced data)
+- Optuna (tuning hiperparametrów)
+- pipeline preprocessing + encoding
+
+---
+
+###  Wyniki
+- ROC-AUC ~0.85
+- Recall: 57%
+- Accuracy: 89%
+
+---
+
+###  Wnioski biznesowe
+- historia spłat = kluczowy czynnik ryzyka
+- wiek silnie koreluje ze stabilnością finansową
+- model skutecznie identyfikuje klientów wysokiego ryzyka
+
+---
+
+# Bank Churn Analysis & Prediction
+
+##  Cel projektu
+Identyfikacja klientów zagrożonych odejściem z banku oraz budowa modelu predykcyjnego churnu.
+
+---
+
+##  Kluczowe elementy
+
+###  EDA
+- analiza wieku i płci klientów
+- wpływ liczby produktów na churn
+- aktywność klienta vs odejścia
+- analiza salda konta i segmentów klientów
+
+---
+
+###  Modelowanie
+- XGBoost jako główny model
+- BorderlineSMOTE (klasa niezbalansowana)
+- Optuna (hyperparameter tuning)
+- Cross-validation
+
+---
+
+###  Wyniki
+- Recall: 0.77
+- Precision: 0.48
+- F1-score: 0.59
+- Accuracy: 0.79
+
+---
+
+###  Wnioski biznesowe
+- klienci 40–60 lat = najwyższe ryzyko churn
+- nieaktywność = silny predyktor odejścia
+- segment wysokiego salda = największy potencjał utraty przychodu
+
+---
+
+#  Makeup Sales Analysis & Revenue Prediction
+
+##  Cel projektu
+Analiza sprzedaży produktów kosmetycznych oraz predykcja dziennego przychodu.
+
+---
+
+##  Kluczowe elementy
+
+###  EDA
+- top 5 marek i produktów
+- analiza kanałów sprzedaży (online vs offline)
+- trendy sprzedaży w czasie
+- analiza regionalna (brand vs country)
+- sezonowość i zmienność sprzedaży
+
+---
+
+###  Modelowanie
+- Random Forest Regressor
+- One-Hot Encoding
+- scaling danych
+- Optuna (tuning)
+
+---
+
+###  Wyniki
+- MAE: ~666 USD
+- R²: 0.37
+
+---
+
+###  Wnioski biznesowe
+- sprzedaż silnie zależna od marki i kanału
+- kanał online dominuje w revenue
+- model pozwala przewidywać przychód z użyteczną dokładnością biznesową
+
+---
+
+##  Stack technologiczny
 
 - Python (Pandas, NumPy)
-- Data Visualization (Matplotlib, Seaborn)
-- Machine Learning (Scikit-learn, XGBoost, Random Forest)
-- Feature Engineering
-- Model Evaluation (classification & regression metrics)
-- Handling imbalanced datasets (SMOTE)
-- Hyperparameter tuning (Optuna)
-- Praca z danymi czasowymi i biznesowymi
+- Scikit-learn
+- XGBoost / LightGBM / Random Forest
+- imbalanced-learn (SMOTE)
+- Optuna (Bayesian optimization)
+- Matplotlib, Seaborn
 
 ---
 
-##  Co pokazuje to portfolio
+##  Kluczowe umiejętności
 
-To repozytorium pokazuje:
-- umiejętność analizy danych od A do Z
-- budowę modeli predykcyjnych
-- interpretację wyników w kontekście biznesowym
-- myślenie analityczne i problem-solving
-- praktyczne zastosowanie Machine Learning
+- analiza danych (EDA)
+- feature engineering
+- modele klasyfikacyjne i regresyjne
+- praca z niezbalansowanymi danymi
+- tuning hiperparametrów
+- interpretacja wyników ML
+- myślenie biznesowe (business-oriented ML)
+
+---
+
+##  Co to portfolio pokazuje
+
+To repozytorium pokazuje umiejętność:
+
+- pracy z realnymi danymi biznesowymi
+- budowy modeli ML end-to-end
+- interpretacji wyników w kontekście biznesowym
+- rozwiązywania problemów (churn, credit risk, revenue forecasting)
 
 ---
 
-##  Dlaczego te projekty?
+##  Podsumowanie
 
-Każdy projekt został zaprojektowany tak, aby odpowiadał na realne pytania biznesowe:
+Każdy projekt odpowiada na realne pytanie biznesowe:
 
-- Którzy klienci odejdą z banku?
-- Co wpływa na przychody sprzedaży?
-- Jak przewidywać trendy i zachowania klientów?
+- Kto nie spłaci kredytu?
+- Kto odejdzie z banku?
+- Jak przewidzieć przychód sprzedaży?
 
----
 
 
